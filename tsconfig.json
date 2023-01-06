@@ -1,0 +1,17 @@
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+	  "target": "ES6",
+	  "module": "es2022",
+	  "esModuleInterop": true,
+	  "sourceMap": false,
+	  "moduleResolution": "node",
+	  "outDir": "dist",
+	  "skipLibCheck": true,
+	  "experimentalDecorators": true,
+	  "emitDecoratorMetadata": true,
+	  "noImplicitThis": true,
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules"],
+  }

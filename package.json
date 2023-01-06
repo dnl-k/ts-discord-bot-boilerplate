@@ -1,0 +1,34 @@
+{
+  "name": "ts-discord-bot-boilerplate",
+  "description": "A TypeScript Discord bot",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "repository": "https://github.com/dnl-k/ts-discord-bot-boilerplate.git",
+  "author": "dnl-k <daniel-k@outlook.de>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "yarn run build && node --es-module-specifier-resolution=node dist/index.js",
+    "start:dev": "nodemon",
+    "deploy-commands": "node --es-module-specifier-resolution=node dist/deploy-commands.js",
+    "build": "yarn run clean && tsc",
+    "clean": "rimraf dist",
+    "lint": "eslint --ext .js,.json,.ts --report-unused-disable-directives ./src"
+  },
+  "dependencies": {
+    "@types/node": "^18.11.17",
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3",
+    "reflect-metadata": "^0.1.13",
+    "tsyringe": "^4.7.0",
+    "typescript": "^4.9.4"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.46.1",
+    "eslint": "^8.30.0",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1"
+  }
+}
