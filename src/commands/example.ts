@@ -1,17 +1,14 @@
-import { CommandInteraction, PermissionFlagsBits, SlashCommandBuilder } from 'discord.js';
-import { Command } from '../componentManager';
+import type { Command } from "./index.js";
 
-export default class Example extends Command {
-  public commandData: SlashCommandBuilder;
-
-  constructor() {
-    super();
-    this.commandData.setName('example')
-      .setDescription('This is an example')
-      .setDefaultMemberPermissions(PermissionFlagsBits.Administrator);
-  }
-
-  async execute(interaction: CommandInteraction) {
-    await interaction.reply('Hello World!');
-  }
-}
+export default {
+	data: {
+		name: 'example',
+		description: 'This is a test',
+	},
+	async execute(interaction) {
+		await interaction.reply({
+			content: "Hi!",
+			ephemeral: true
+		});
+	},
+} satisfies Command;

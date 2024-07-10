@@ -1,12 +1,15 @@
-import { container } from 'tsyringe';
-import { Client } from '../client';
-import { Event } from '../componentManager';
+import { Events } from "discord.js";
+import type { Event } from './index.js';
 
-export default class Ready extends Event {
-  public async run(): Promise<void> {
-    const client = container.resolve<Client>('client');
-    if (client.user) {
-      console.log(`\x1b[32m${client.user.username} is ready\x1b[0m`);
+export default {
+  name: Events.ClientReady,
+  once: true,
+  async execute(client) {
+    for (const task of client.tasks.values()) {
+      task.execute();
+      task.timeoutID = setInterval(() => {
+        task.execute();
+      }, task.delay);
     }
   }
-}
+} satisfies Event<Events.ClientReady>;

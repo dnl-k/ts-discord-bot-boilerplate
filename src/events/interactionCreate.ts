@@ -1,20 +1,13 @@
-import { BaseInteraction } from 'discord.js';
-import { container } from 'tsyringe';
-import { Client } from '../client';
-import { Event } from '../componentManager';
+import { Events } from "discord.js";
+import type { Event } from './index.js';
 
-export default class interactionCreate extends Event {
-  public async run(interaction: BaseInteraction): Promise<void> {
-    const client = container.resolve<Client>('client');
-    if (interaction.isChatInputCommand()) {
-      const command = client.commandManager.commands.get(interaction.commandName);
-
-      if (!command) return;
-      try {
-        await command.execute(interaction);
-      } catch (e) {
-        await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
-      }
+export default {
+  name: Events.InteractionCreate,
+  async execute(interaction) {
+    if (interaction.isCommand()) {
+      const command = interaction.client.commands.get(interaction.commandName);
+      if (!command) throw new Error(`Command '${interaction.commandName}' not found.`);
+      await command.execute(interaction);
     }
   }
-}
+} satisfies Event<Events.InteractionCreate>;

@@ -1,17 +1,17 @@
 {
-	"compileOnSave": false,
+	"$schema": "https://json.schemastore.org/tsconfig.json",
 	"compilerOptions": {
-	  "target": "ES6",
-	  "module": "es2022",
-	  "esModuleInterop": true,
-	  "sourceMap": false,
-	  "moduleResolution": "node",
-	  "outDir": "dist",
-	  "skipLibCheck": true,
-	  "experimentalDecorators": true,
-	  "emitDecoratorMetadata": true,
-	  "noImplicitThis": true,
-	},
-	"include": ["src/**/*"],
-	"exclude": ["node_modules"],
-  }
+		"declaration": false,
+		"declarationMap": false,
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"target": "ES2022",
+		"outDir": "dist",
+		"strict": true,
+		"lib": [
+			"esnext",
+			"ESNext.Disposable"
+		],
+		"skipLibCheck": true
+	}
+}

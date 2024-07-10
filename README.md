@@ -1,1 +1,0 @@
-# ts-discord-bot-boilerplate
