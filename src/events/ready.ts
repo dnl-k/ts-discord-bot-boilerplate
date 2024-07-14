@@ -6,8 +6,8 @@ export default {
   once: true,
   async execute(client) {
     for (const task of client.tasks.values()) {
-      task.execute();
       task.timeoutID = setInterval(() => {
+        task.once && clearInterval(task.timeoutID);
         task.execute();
       }, task.delay);
     }

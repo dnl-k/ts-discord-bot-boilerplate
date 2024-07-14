@@ -25,6 +25,12 @@ export type Task = {
 	 * The function to execute when the command is called
 	 */
 	execute(): Promise<void> | void;
+  /**
+	 * Whether or not the task should only be executed once
+	 *
+	 * @defaultValue false
+	 */
+	once?: boolean;
 };
 
 /**
@@ -36,6 +42,7 @@ export const schema = z.object({
   timeoutID: z.number().int().optional(),
 	data: z.record(z.any()).optional(),
 	execute: z.function(),
+  once: z.boolean().optional().default(false),
 });
 
 /**

@@ -25,7 +25,9 @@ export class Components {
       throw new Error(`${dir} is not a directory`);
     }
 
-    const files = await readdir(dir);
+    const files = await readdir(dir, {
+      recursive: true
+    });
     const structures: T[] = [];
 
     for (const file of files) {
